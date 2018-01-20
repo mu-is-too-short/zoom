@@ -1,0 +1,92 @@
+.\" @(#)$Mu: zoom/zoom.man 1.6 1998/03/27 06:27:30 $
+.TH ZOOM 1 "Feb 1998"
+.\"----------------------------------------------------------------------------
+.SH NAME
+zoom \- a simple screen zoomer.
+.\"----------------------------------------------------------------------------
+.SH SYNOPSIS
+.B zoom
+.RI [ "-H" ]
+.RI [ "-x ulx" ]
+.RI [ "-y uly" ]
+.RI [ "-w width" ]
+.RI [ "-h height" ]
+.RI [ "-m mag" ]
+.RI [ "-d display" ]
+.RI [ "-t timeout" ]
+.RI [ "-n" ]
+.\"----------------------------------------------------------------------------
+.SH DESCRIPTION
+\fBzoom\fR is a very simple screen magnifyer for \fBX\fR.  All display
+depths are supported and the X Shared Memory extension is used, when possible,
+for better performance.  If your server doesn't support XShm (an X-terminal
+or AIX 3 perhaps) or you're running over a network (where XShm just doesn't
+apply), don't worry, everything will work just fine.
+.\"----------------------------------------------------------------------------
+.SH OPTIONS
+.TP
+.I -H
+Show a short usage message and exit.
+.TP
+.IR "-x ulx" ", " "-y uly"
+Specify the initial upper left corner of the source region.
+.TP
+.I "-w width"
+Specify the initial source width.
+.TP
+.I "-h height"
+Specify the initial source height.
+.TP
+.I "-m mag"
+Specify the initial magnification.  The default is 2.
+.TP
+.I "-d display"
+Specify the display to use.
+.TP
+.I -n
+Don't try to use the shared memory extension.  By default, the X shared
+memory extension will be used if it is available and it will work (XShm does
+not work across the network for obvious reasons).
+.TP
+.I "-t timeout"
+Specify the titlebar timeout.  Various things in \fBzoom\fR use the titlebar
+for displaying status message, the \fItimeout\fR is the number of seconds
+before the titlebar will revert to its normal state.
+.\"----------------------------------------------------------------------------
+.SH COMMANDS
+The following keyboard/mouse commands are available when \fBzoom\fR is running:
+.TP
+.B "+/-"
+Increase/decrease the zoom factor.
+.TP
+.B d
+Cycle through the (compiled-in) list of delays; the title bar will show
+the new display for a couple seconds and then revert to normal.
+.TP
+.B q
+Quit.
+.TP
+.B "</>"
+Decrease/increase the keyboard scroll step by a factor of two; the title
+bar will show the new step for a couple seconds and then revert to normal.
+.TP
+.B "arrow keys"
+The arrow keys will move the source region around in the obvious manner.
+.TP
+.B mouse
+Dragging with mouse button one down will choose a new source region; you have
+to start in the \fBzoom\fR window.  Mouse button two will display the color
+of the pixel under the cursor as a hex RGB value, the value will appear in
+the zoom window's titlebar.
+.\"----------------------------------------------------------------------------
+.SH "SEE ALSO"
+.BR xzoom "(1), "
+.BR xmag "(1)."
+.\"----------------------------------------------------------------------------
+.SH BUGS
+Bug reports should be sent to Eric A. Howe (mu@trends.net).
+.\"----------------------------------------------------------------------------
+.SH AUTHORS
+This program started out as a hack on xzoom by Itai Nahshon <nahshon@best.com>
+but it has been hack beyond recognition by Mathew Francey and Eric Howe.
+Consider this a complete rewrite.
